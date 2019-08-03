@@ -19,6 +19,9 @@ public class LoginPage {
 	@FindBy(css = "[data-testid = login_button]")
 	WebElement loginButton;
 	
+	@FindBy(css = "[data-testid = login_error_notification]")
+	WebElement loginErrorNotification;
+	
 	public LoginPage() {
 		driver = DefaultDriver.getDriver();
 		PageFactory.initElements(driver, this);
@@ -28,6 +31,10 @@ public class LoginPage {
 		mailInput.sendKeys(mail);
 		passwordInput.sendKeys(password);
 		loginButton.click();
+	}
+	
+	public Boolean isLoginErrorVisible() {
+		return loginErrorNotification.isDisplayed();
 	}
 	
 }

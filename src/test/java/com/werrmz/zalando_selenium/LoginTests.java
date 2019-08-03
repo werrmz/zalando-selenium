@@ -39,6 +39,25 @@ public class LoginTests {
 		assertTrue(driver.getPageSource().contains("Witaj Weronika"));
 	}
 	
+	@Test
+	public void loginUnsuccessfully() {
+		// Given
+		String mail = "secret@gmail.com";
+		String password = "secret-password";
+		
+		// When
+		homePage.loginButtonClick();
+		DefaultDriver.wait(1);
+		loginPage.login(mail, password);
+		DefaultDriver.wait(3);
+		
+		// Then
+		Boolean isLoginErrorVisible = loginPage.isLoginErrorVisible();
+		assertTrue(isLoginErrorVisible);
+		
+	}
+	
+	
 	@After                    
     public void quit() {
 		DefaultDriver.close();
