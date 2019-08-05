@@ -3,9 +3,7 @@ package com.werrmz.zalando_selenium;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.*;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import com.werrmz.zalando_selenium.pages.*;
 
@@ -25,7 +23,7 @@ public class LoginTests {
 	public void loginSuccessfully() {
 		// Given
 		String mail = "secret@gmail.com";
-		String password = "secret-password";
+		String password = "correct-password";
 		
 		// When
 		homePage.loginButtonClick();
@@ -43,7 +41,7 @@ public class LoginTests {
 	public void loginUnsuccessfully() {
 		// Given
 		String mail = "secret@gmail.com";
-		String password = "secret-password";
+		String password = "incorrect-password";
 		
 		// When
 		homePage.loginButtonClick();
@@ -54,9 +52,7 @@ public class LoginTests {
 		// Then
 		Boolean isLoginErrorVisible = loginPage.isLoginErrorVisible();
 		assertTrue(isLoginErrorVisible);
-		
 	}
-	
 	
 	@After                    
     public void quit() {
